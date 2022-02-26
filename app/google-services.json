@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "178638641338",
+    "project_id": "golden-books-d3f16",
+    "storage_bucket": "golden-books-d3f16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178638641338:android:608c19a771a6ee38910a83",
+        "android_client_info": {
+          "package_name": "com.example.a1stapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "178638641338-v5b4375f9psht46co1hjes3g4u5hnr53.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrfQxqes_xJ64Mx3o0X-m1Z3j9XFd7bPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "178638641338-v5b4375f9psht46co1hjes3g4u5hnr53.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
