@@ -1,4 +1,4 @@
-package com.example.a1stapp;
+package com.example.a1stapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.a1stapp.databinding.ActivityCategoryAddBinding;

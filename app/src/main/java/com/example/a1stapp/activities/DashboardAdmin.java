@@ -1,4 +1,4 @@
-package com.example.a1stapp;
+package com.example.a1stapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -77,7 +77,7 @@ public class DashboardAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Fauth.signOut();
-                startActivity(new Intent(DashboardAdmin.this,MainActivity.class));
+                startActivity(new Intent(DashboardAdmin.this, MainActivity.class));
                 finish();
 
             }
@@ -87,13 +87,13 @@ public class DashboardAdmin extends AppCompatActivity {
         binding.pdfClik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashboardAdmin.this,AddPdfActivity.class));
+                startActivity(new Intent(DashboardAdmin.this, AddPdfActivity.class));
             }
         });
         binding.addCategoryMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashboardAdmin.this,CategoryAddActivity.class));
+                startActivity(new Intent(DashboardAdmin.this, CategoryAddActivity.class));
 
             }
         });

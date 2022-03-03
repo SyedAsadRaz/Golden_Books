@@ -2,7 +2,11 @@ package com.example.a1stapp.adapters;
 
 import static com.example.a1stapp.Constants.MAX_BYTES_PDF;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +21,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.a1stapp.activities.EditPdfActivity;
 import com.example.a1stapp.MyApplication;
+import com.example.a1stapp.activities.PdfDetailsActivity;
+import com.example.a1stapp.activities.PdfViewActivity;
 import com.example.a1stapp.databinding.RowPdfAdminBinding;
 import com.example.a1stapp.filters.FilterPdfAdmin;
 import com.example.a1stapp.models.ModelPdf;
@@ -36,7 +43,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 
-import java.time.temporal.Temporal;
 import java.util.ArrayList;
 
 public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin> implements Filterable {
@@ -54,11 +60,19 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
     //TAG creating
     public static final String TAG = "PDF_ADAPTER_TAG";
 
+    //progress
+    private ProgressDialog progressDialog;
+
     //Constructor
     public AdapterPdfAdmin(Context context,ArrayList<ModelPdf> pdfArrayList){
         this.context = context;
         this.pdfArrayList = pdfArrayList;
         this.filterList = pdfArrayList;
+
+        //initiate progress dialogue
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Please Wait");
+        progressDialog.setCanceledOnTouchOutside(false);
     }
 
     @NonNull
@@ -67,6 +81,7 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
         //binding Layouts using Biew binding
         binding= RowPdfAdminBinding.inflate(LayoutInflater.from(context),parent,false);
 
+
         return new HolderPdfAdmin(binding.getRoot());
     }
 
@@ -74,9 +89,13 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
     public void onBindViewHolder(@NonNull HolderPdfAdmin holder, int position) {
         /*Get data set dta a handle clicks etc*/
 
+
         ModelPdf model = pdfArrayList.get(position);
         String title = model.getTitle();
         String description = model.getDescription();
+        String pdfUrl = model.getUrl();
+        String pdfId = model.getId();
+        String categoryId = model.getCategoryId();
         long timestamp = model.getTimestamp();
 
         /* We need to convert timestamp format to ddmmyyy format*/
@@ -86,128 +105,70 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
         holder.descriptionTv.setText(description);
         holder.dateTv.setText(formattedDate);
 
+
         //load further detals like categry , pdf from URL, pdf size in separate functions
-        loadCategory(model,holder);
-        loadPdfFromUrl(model,holder);
-        loadPdfSize(model,holder);
+        MyApplication.loadCategory(""+categoryId,holder.categoryTv);
+        MyApplication.loadPdfFromUrlSinglePage(""+pdfUrl,""+title,holder.pdfView,holder.progressBar);
+
+        MyApplication.loadPdfSize(""+pdfUrl,""+title, holder.sizeTv );
+
+        //handle menuBtn clik setup edit and delete pdfs books
+        binding.menuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showOptionsDialogue(model,holder);
+            }
+        });
+
+        //klik on pdf and show detail activity
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PdfDetailsActivity.class);
+                intent.putExtra("bookId",pdfId);
+                context.startActivity(intent);
+            }
+        });
+
+
     }
 
-    private void loadPdfSize(ModelPdf model, HolderPdfAdmin holder) {
-        //using url we can get file and it's metadata from firebase storage
+    private void showOptionsDialogue(ModelPdf model, HolderPdfAdmin holder) {
+        String bookId = model.getId();
+        String bookUrl = model.getUrl();
+        String bookTitle = model.getTitle();
 
-        String pdfUrl = model.getUrl();
-        StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl);
-        reference.getMetadata()
-                .addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
+        //options to show in dialogue
+        String[] options = {"Edit","Delete"};
+
+        //alert Dialogue
+        AlertDialog.Builder builder =new AlertDialog.Builder(context);
+        builder.setTitle("Choose Options")
+                .setItems(options, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onSuccess(StorageMetadata storageMetadata) {
-                        //get size in bytes...
-                        double bytes = storageMetadata.getSizeBytes();
-                        Log.d(TAG,"onSuccess: "+model.getTitle()+" "+bytes);
+                    public void onClick(DialogInterface dialog, int which) {
+                        if ((which == 0)){
+                            //Edit clicked Open New Activity To edit the book info
+                            Intent intent = new Intent(context, EditPdfActivity.class);
+                            intent.putExtra("bookId",bookId);
+                            context.startActivity(intent);
 
-                        // Converts bytes to KB,MB
-                        double kb = bytes/1024;
-                        double mb = kb/1024;
+                        }else if (which==1){
+                            //Delete klik
+                            MyApplication.deleteBook(context,""+bookId,""+bookUrl,""+bookTitle);
 
-                        if (mb >= 1){
-                            holder.sizeTv.setText(String.format("%.2f",mb)+"MB");
-                        }else if (kb >= 1){
-                            holder.sizeTv.setText(String.format("%.2f",kb)+"KB");
-                        }else {
-                            holder.sizeTv.setText(String.format(("%.2f"),bytes)+"bytes");
+                            
                         }
-
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                //failed getting metadata
-                Toast.makeText(context, "Field :"+e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
+                })
+                .show();
     }
 
-    private void loadPdfFromUrl(ModelPdf model, HolderPdfAdmin holder) {
-        //using url we can get file and its metadata from firebase storag
-
-        String pdfUrl = model.getUrl();
-        StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl);
-        reference.getBytes(MAX_BYTES_PDF)
-                .addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte[] bytes) {
-                        Log.d(TAG,"onSuccess: "+model.getTitle()+" Success got this file");
 
 
-                        //set to pdfView
-                        holder.pdfView.fromBytes(bytes)
-                                .pages(0) //show only first page
-                        .spacing(0)
-                                .swipeHorizontal(false)
-                                .enableSwipe(false)
-                                .onError(new OnErrorListener() {
-                                    @Override
-                                    public void onError(Throwable t) {
-                                        //hide progress
-                                        holder.progressBar.setVisibility(View.INVISIBLE);
-                                        Log.d(TAG,"onError: "+t.getMessage());
-                                    }
-                                }).onPageError(new OnPageErrorListener() {
-                            @Override
-                            public void onPageError(int page, Throwable t) {
-                                //hide progress
-                                holder.progressBar.setVisibility(View.INVISIBLE);
-                                Log.d(TAG,"onPageError: "+t.getMessage());
-                            }
-                        })
-                                .onLoad(new OnLoadCompleteListener() {
-                                    @Override
-                                    public void loadComplete(int nbPages) {
-                                        //pdf loaded
-                                        //hide progress
-                                        holder.progressBar.setVisibility(View.INVISIBLE);
-                                        Log.d(TAG,"loadComplete: pdf loaded! ");
-                                    }
-                                })
-                                .load();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d(TAG,"onFailure: Failed getting file from url due to "+e.getMessage());
 
 
-            }
-        });
-
-    }
-
-    private void loadCategory(ModelPdf model, HolderPdfAdmin holder) {
-        //get category using categoryId
-
-        String categoryId = model.getCategoryId();
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Categories");
-        reference.child(categoryId)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String Category = ""+snapshot.child("Category").getValue();
-
-                        //set to Category text View
-                        holder.categoryTv.setText(Category);
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-    }
+    //cut delete book fun to myapplication class
 
     @Override
     public int getItemCount() {

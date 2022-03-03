@@ -16,10 +16,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.a1stapp.PdfListAdminActivity;
+import com.example.a1stapp.activities.PdfListAdminActivity;
+import com.example.a1stapp.databinding.RowCategoryBinding;
 import com.example.a1stapp.filters.FilterCategory;
 import com.example.a1stapp.models.ModelCategoryClass;
-import com.example.a1stapp.databinding.RowCategoryBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;

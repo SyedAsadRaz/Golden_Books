@@ -1,4 +1,4 @@
-package com.example.a1stapp;
+package com.example.a1stapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,22 +8,17 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.a1stapp.adapters.AdapterPdfAdmin;
-import com.example.a1stapp.databinding.ActivityAddPdfBinding;
 import com.example.a1stapp.databinding.ActivityPdfListAdminBinding;
 import com.example.a1stapp.models.ModelPdf;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PdfListAdminActivity extends AppCompatActivity {
 
@@ -93,7 +88,6 @@ public class PdfListAdminActivity extends AppCompatActivity {
     private void loadPdfList() {
 
         FirebaseDatabase.getInstance().getReference("Books")
-//                .equalTo(categoryId,"categoryId")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

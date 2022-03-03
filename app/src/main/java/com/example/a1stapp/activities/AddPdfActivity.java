@@ -1,4 +1,4 @@
-package com.example.a1stapp;
+package com.example.a1stapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -177,6 +177,8 @@ public class AddPdfActivity extends AppCompatActivity {
         hashMap.put("categoryId",+selectedCategoryId);
         hashMap.put("url",""+uploadedPdfUrl);
         hashMap.put("timestamp",""+timestamp);
+        hashMap.put("viewCount",0);
+        hashMap.put("downloadsCount",0);
 
         //DB refrence \: DB > Books
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");

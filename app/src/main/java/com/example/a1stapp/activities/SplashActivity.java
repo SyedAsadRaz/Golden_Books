@@ -1,4 +1,4 @@
-package com.example.a1stapp;
+package com.example.a1stapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.a1stapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser == null) {
                     // It's New User
-                    startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
                     finish();
                 }else{
                     // User Loged in so keep it to Dshboard
@@ -56,11 +57,11 @@ public class SplashActivity extends AppCompatActivity {
                 String userType= ""+snapshot.child("UserType").getValue();
                 //Chek User Type Now!
                 if (userType.equals("user")){
-                    startActivity(new Intent(SplashActivity.this,DashboardUser.class) );
+                    startActivity(new Intent(SplashActivity.this, DashboardUser.class) );
                     finish();
 
                 }else if (userType.equals("admin")){
-                    startActivity(new Intent(SplashActivity.this,DashboardAdmin.class));
+                    startActivity(new Intent(SplashActivity.this, DashboardAdmin.class));
                     finish();
                 }
             }

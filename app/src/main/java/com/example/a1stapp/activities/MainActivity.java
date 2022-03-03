@@ -1,4 +1,4 @@
-package com.example.a1stapp;
+package com.example.a1stapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,18 +9,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.a1stapp.databinding.ActivityMainBinding;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -31,8 +22,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.net.InetSocketAddress;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -57,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
         binding.skipBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,DashboardUser.class));
+                startActivity(new Intent(MainActivity.this, DashboardUser.class));
                 finish();
             }
         });
         binding.gotoSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Register.class));
+                startActivity(new Intent(MainActivity.this, Register.class));
                 finish();
             }
         });
@@ -122,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
                                     }else if (userType.equals("admin")){
                                         Toast.makeText(MainActivity.this, "Welcome Back!", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(MainActivity.this,DashboardAdmin.class));
+                                        startActivity(new Intent(MainActivity.this, DashboardAdmin.class));
                                         finish();
                                     }
                                 }

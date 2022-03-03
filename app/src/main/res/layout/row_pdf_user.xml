@@ -40,8 +40,8 @@
             style="@style/TextAppearance.MaterialComponents.Body2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="3dp"
-            android:layout_toStartOf="@id/menuBtn"
             android:layout_toEndOf="@id/pdfRl"
             android:text="Book Title"
             android:textColor="@color/black"
@@ -56,7 +56,7 @@
             android:layout_above="@+id/dateTv"
             android:layout_below="@id/titleTv"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/pdfRl"
             android:text="Book Description"
             android:textColor="@color/dark_Yellow"
@@ -64,28 +64,28 @@
 
         <TextView
             android:id="@+id/categoryTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Category"
-            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
-            android:textColor="@color/black"/>
+            android:text="Category"
+            android:textColor="@color/black" />
 
 
         <TextView
             android:id="@+id/sizeTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="13 mb"
-            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@id/pdfRl"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
-            android:textColor="@color/black"/>
+            android:layout_toEndOf="@id/pdfRl"
+            android:text="13 mb"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/dateTv"
@@ -100,24 +100,6 @@
             android:text="dd/mm/yyyy"
             android:textAlignment="center"
             android:textColor="@color/black" />
-
-        <ImageButton
-            android:id="@+id/menuBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
-            android:background="@color/white"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:padding="10dp"
-            android:src="@drawable/ic__more_menu" />
-
-
-
 
 
     </RelativeLayout>

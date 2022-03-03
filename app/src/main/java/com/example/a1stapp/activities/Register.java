@@ -1,33 +1,24 @@
-package com.example.a1stapp;
+package com.example.a1stapp.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PatternMatcher;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.a1stapp.databinding.ActivityMainBinding;
 import com.example.a1stapp.databinding.ActivityRegisterBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.net.InetSocketAddress;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
 
@@ -48,7 +39,7 @@ public class Register extends AppCompatActivity {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Register.this,MainActivity.class));
+                startActivity(new Intent(Register.this, MainActivity.class));
                 finish();
             }
         });
@@ -128,7 +119,7 @@ public class Register extends AppCompatActivity {
                                                     progressDialog.dismiss();
                                                     //Data Added...!
                                                     Toast.makeText(Register.this, "Account Creted Succusfully!", Toast.LENGTH_SHORT).show();
-                                                    startActivity(new Intent(Register.this,DashboardUser.class));
+                                                    startActivity(new Intent(Register.this, DashboardUser.class));
                                                     finish();
 
                                                 }
