@@ -12,7 +12,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
 import com.example.a1stapp.BooksUserFragment;
+import com.example.a1stapp.R;
 import com.example.a1stapp.databinding.ActivityDashboardUserBinding;
 import com.example.a1stapp.models.ModelCategoryClass;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,12 +44,15 @@ public class DashboardUser extends AppCompatActivity {
         Fauth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        if (Fauth.getCurrentUser() != null){
+            loadProfileImage();
+        }
+
+
+        checkUser();
         setupViewPagerAdapter(binding.viewPager);
         binding.tabLayout.setupWithViewPager(binding.viewPager);
 
-        // add user email to title bar of dashboard
-        String email = firebaseUser.getEmail();
-        binding.gmailShowOnDashboard.setText(email);
 
         binding.logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +63,25 @@ public class DashboardUser extends AppCompatActivity {
 
             }
         });
+
+        binding.profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardUser.this,ProfileActivity.class));
+            }
+        });
+    }
+
+    private void checkUser() {
+        FirebaseUser firebaseUser = Fauth.getCurrentUser();
+        if (firebaseUser == null){
+            //user not logged in
+            binding.gmailShowOnDashboard.setText("Guest mode");
+        }else {
+            // add user email to title bar of dashboard
+            String email = firebaseUser.getEmail();
+            binding.gmailShowOnDashboard.setText(email);
+        }
     }
 
     private void setupViewPagerAdapter(ViewPager viewPager){
@@ -65,7 +89,7 @@ public class DashboardUser extends AppCompatActivity {
 
         categoryClassArrayList = new ArrayList<>();
 
-        //load categories from firbase
+        //load categories from firebase
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Categories");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -159,5 +183,31 @@ public class DashboardUser extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return fragmentTitleList.get(position);
         }
+    }
+
+    private void loadProfileImage() {
+        //get data from firebase
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        reference.child(Fauth.getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //get profile image using snapshot...
+                        String Proile_Image = ""+snapshot.child("ProileImage").getValue();
+
+                        //set image using glide...
+                        Glide.with(DashboardUser.this)
+                                .load(Proile_Image)
+                                .placeholder(R.drawable.ic_baseline_person_24)
+                                .into(binding.profileBtn);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
     }
 }

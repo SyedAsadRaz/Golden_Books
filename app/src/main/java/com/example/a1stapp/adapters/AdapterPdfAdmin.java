@@ -95,8 +95,8 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
         String description = model.getDescription();
         String pdfUrl = model.getUrl();
         String pdfId = model.getId();
-        String categoryId = model.getCategoryId();
-        long timestamp = model.getTimestamp();
+        long categoryId = model.getCategoryId();
+        String timestamp = model.getTimestamp();
 
         /* We need to convert timestamp format to ddmmyyy format*/
         String formattedDate = MyApplication.formatTimestamp(timestamp);
@@ -108,7 +108,7 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
 
         //load further detals like categry , pdf from URL, pdf size in separate functions
         MyApplication.loadCategory(""+categoryId,holder.categoryTv);
-        MyApplication.loadPdfFromUrlSinglePage(""+pdfUrl,""+title,holder.pdfView,holder.progressBar);
+        MyApplication.loadPdfFromUrlSinglePage(""+pdfUrl,""+title,holder.pdfView,holder.progressBar,null);
 
         MyApplication.loadPdfSize(""+pdfUrl,""+title, holder.sizeTv );
 

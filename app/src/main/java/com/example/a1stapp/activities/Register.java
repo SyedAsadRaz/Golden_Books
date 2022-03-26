@@ -104,7 +104,7 @@ public class Register extends AppCompatActivity {
                                     hashMap.put("City",city);
                                     hashMap.put("Email",email);
                                     hashMap.put("Passward",passward);
-                                    hashMap.put("Proile Image ","");
+                                    hashMap.put("ProileImage","https://images.unsplash.com/photo-1495615080073-6b89c9839ce0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3F1YXJlfGVufDB8fDB8fA%3D%3D&w=1000&q=80");
                                     hashMap.put("timestamp",timestamp);
                                     hashMap.put("UserType","user");// will add manually from firbase to admin or user
 

@@ -9,6 +9,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
+import com.example.a1stapp.R;
 import com.example.a1stapp.adapters.AdopterCategory;
 import com.example.a1stapp.databinding.ActivityDashboardAdminBinding;
 import com.example.a1stapp.models.ModelCategoryClass;
@@ -45,6 +47,7 @@ public class DashboardAdmin extends AppCompatActivity {
         binding.gmailShowOnDashboard.setText(email);
 
         loadCategories();
+        loadProfileImage();
 
         //Search Bar
         binding.searchEt.addTextChangedListener(new TextWatcher() {
@@ -83,6 +86,13 @@ public class DashboardAdmin extends AppCompatActivity {
             }
         });
 
+        binding.profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardAdmin.this,ProfileActivity.class));
+            }
+        });
+
         //handle add pdf button
         binding.pdfClik.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +107,30 @@ public class DashboardAdmin extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void loadProfileImage() {
+        //get data from firebase
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        reference.child(Fauth.getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //get profile image using snapshot...
+                        String Proile_Image = ""+snapshot.child("ProileImage").getValue();
+
+                        //set image using glide...
+                        Glide.with(DashboardAdmin.this)
+                                .load(Proile_Image)
+                                .placeholder(R.drawable.ic_baseline_person_24)
+                                .into(binding.profileBtn);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
     private void loadCategories() {

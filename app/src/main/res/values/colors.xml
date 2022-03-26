@@ -10,4 +10,5 @@
     <color name="gray">#E3E3E3</color>
     <color name="dark_Yellow">#d7ab00</color>
     <color name="Golden">#FFD700</color>
+    <color name="Transparent">#00FFD700</color>
 </resources>

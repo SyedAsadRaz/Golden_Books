@@ -51,8 +51,8 @@ public class BooksUserFragment extends Fragment {
     public static BooksUserFragment newInstance(String categoryId, String category, String uid ) {
         BooksUserFragment fragment = new BooksUserFragment();
         Bundle args = new Bundle();
-        args.putString("categoryID", categoryId);
-        args.putString("category", category);
+        args.putString("categoryId", categoryId);
+        args.putString("Category", category);
         args.putString("uid", uid);
         fragment.setArguments(args);
         return fragment;
@@ -63,7 +63,7 @@ public class BooksUserFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             categoryId = getArguments().getString("categoryId");
-            category = getArguments().getString("category");
+            category = getArguments().getString("Category");
             uid = getArguments().getString("uid");
         }
     }

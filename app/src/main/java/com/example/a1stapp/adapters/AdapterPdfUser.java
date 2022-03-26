@@ -58,8 +58,8 @@ public class AdapterPdfUser extends RecyclerView.Adapter<AdapterPdfUser.HolderPd
         String title = model.getTitle();
         String description = model.getDescription();
         String pdfUrl = model.getUrl();
-        String categoryId = model.getCategoryId();
-        long timestamp = model.getTimestamp();
+        long categoryId = model.getCategoryId();
+        String timestamp = model.getTimestamp();
 
         //convert time
         String date = MyApplication.formatTimestamp(timestamp);
@@ -72,7 +72,7 @@ public class AdapterPdfUser extends RecyclerView.Adapter<AdapterPdfUser.HolderPd
         MyApplication.loadPdfFromUrlSinglePage(""+pdfUrl,
                 ""+title,
                 holder.pdfView,
-                holder.progressBar
+                holder.progressBar,null
         );
         MyApplication.loadCategory(
                 ""+categoryId,
@@ -117,7 +117,7 @@ public class AdapterPdfUser extends RecyclerView.Adapter<AdapterPdfUser.HolderPd
             titleTv = binding.titleTv;
             descriptionTv = binding.descriptionTv;
             sizeTv = binding.sizeTv;
-            dateTv = binding.sizeTv;
+            dateTv = binding.dateTv;
             categoryTv = binding.categoryTv;
             pdfView = binding.pdfView;
             progressBar = binding.progressBar;

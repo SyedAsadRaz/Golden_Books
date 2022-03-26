@@ -2,9 +2,14 @@ package com.example.a1stapp.models;
 
 public class ModelPdf {
     //Variables
-    String uid,id,title,description,categoryId,url;
-
-    long timestamp;
+    String uid;
+    String id;
+    String title;
+    String description;
+    long categoryId;
+    String url;
+    boolean favorite;
+    String timestamp;
     long viewCount,downloadsCount;
 
     //Constructor
@@ -14,17 +19,7 @@ public class ModelPdf {
     }
 
     //constructors with all params
-    public ModelPdf(String uid, String id, String title, String description, String categoryId, String url, long timestamp, long viewCount, long downloadsCount) {
-        this.uid = uid;
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.categoryId = categoryId;
-        this.url = url;
-        this.timestamp = timestamp;
-        this.viewCount = viewCount;
-        this.downloadsCount = downloadsCount;
-    }
+
 
 
     //---getter/setters---//
@@ -60,11 +55,11 @@ public class ModelPdf {
         this.description = description;
     }
 
-    public String getCategoryId() {
+    public long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -76,11 +71,11 @@ public class ModelPdf {
         this.url = url;
     }
 
-    public long getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(long timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -98,5 +93,13 @@ public class ModelPdf {
 
     public void setDownloadsCount(long downloadsCount) {
         this.downloadsCount = downloadsCount;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 }

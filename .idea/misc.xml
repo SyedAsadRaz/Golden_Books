@@ -5,36 +5,48 @@
       <map>
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/custom_input.xml" value="0.2" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/favorite_border_24.xml" value="0.2555" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic__arrow_down.xml" value="0.2" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_arrow_down.xml" value="0.2" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.18" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_baseline_category_24.xml" value="0.18" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.2555" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_baseline_location_city_24.xml" value="0.18" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_baseline_mail_24.xml" value="0.18" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.18" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.18" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.18" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.18" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_book_title.xml" value="0.252" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_more_btn.xml" value="0.168" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/ic_pdf_attachment.xml" value="0.2" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/shape_buttns.xml" value="0.1475" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/shape_button.xml" value="0.18" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/shape_rectangle.xml" value="0.1225" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/shape_sect1.xml" value="0.2555" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/shape_toolbar.xml" value="0.18" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/drawable/singup_btn_shape.xml" value="0.18" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_add_pdf.xml" value="0.2" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_category_add.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_dashboard_admin.xml" value="0.2" />
-        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_dashboard_user.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_dashboard_user.xml" value="0.18888888888888888" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_edit_pdf.xml" value="0.264" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_edit_profile.xml" value="0.1872103799814643" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_forgot_pass.xml" value="0.1" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_home.xml" value="0.25" />
-        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_pdf_details.xml" value="0.29253731343283584" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_pdf_details.xml" value="0.22402597402597402" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_pdf_list_admin.xml" value="0.16" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_pdf_view.xml" value="0.264" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_profile.xml" value="0.19844357976653695" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/custom_input.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/dialogue_comment_add.xml" value="0.2021950189953567" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/fragment_books_user.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/row_category.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/row_comment.xml" value="0.11832946635730858" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/row_fav_books.xml" value="0.1" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/row_pdf_admin.xml" value="0.4" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/1stapp/app/src/main/res/layout/row_pdf_user.xml" value="0.12682926829268293" />
       </map>

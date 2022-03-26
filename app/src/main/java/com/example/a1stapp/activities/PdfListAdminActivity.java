@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.a1stapp.adapters.AdapterPdfAdmin;
 import com.example.a1stapp.databinding.ActivityPdfListAdminBinding;
@@ -29,7 +30,8 @@ public class PdfListAdminActivity extends AppCompatActivity {
     //adapter
     private AdapterPdfAdmin adapterPdfAdmin;
 
-    private String categoryId, categoryTitle;
+    private String  categoryTitle;
+    private Long categoryId;
     private static final String TAG = "PDF_LIST_TAG";
 
 
@@ -41,7 +43,7 @@ public class PdfListAdminActivity extends AppCompatActivity {
 
         //get data from intent
         Intent intent = getIntent();
-        categoryId = intent.getStringExtra("categoryId");
+        categoryId = Long.valueOf(intent.getStringExtra("categoryId"));
         categoryTitle = intent.getStringExtra("categoryTitle");
 
         //set pdf category
